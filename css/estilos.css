@@ -1,0 +1,15 @@
+#rest-filters{
+    margin-bottom: 10px;
+}
+#rest-filters h3{
+    margin-top: 0;
+}
+#display{
+    height: 60%;
+    display: block;
+}
+#json-display{
+    height: 100%;
+    padding: 15px;
+    background-color: #444;
+}
