@@ -6,12 +6,16 @@ class FiltersView extends View{
     }
 
     template(model) {
-        var html = `
+        let fields = {
+            text: '<input id="{id}" type="text" placeholder="{placeholder}"/>',
+            selectize: '<input id="{id}" type="selectize" placeholder="{placeholder}"/>'
+        }; 
+        let html = `
         <h1 class="text-center">${model.title}</h1>
         <div class="text-center">
             <form webservice="${model.id}" class="form">
-                <input id="${model.filters[0].id}" placeholder="${model.filters[0].placeholder}"/>
-                <button id="submit" type="submit">Consultar</button>
+                ${model.filters.map(f=> fields[f.type].replace('{id}', f.id).replace('{placeholder}', f.placeholder)).join('')}
+                <button id="submit" type="submit" class="btn btn-primary">Consultar</button>
             </form>
         </div>
         `;
@@ -19,5 +23,16 @@ class FiltersView extends View{
     }
     update(model){
         super.update(model);
+
+        $('input[type="selectize"]').selectize({
+            delimiter: ',',
+            persist: false,
+            create: function(input) {
+                return {
+                    value: input,
+                    text: input
+                }
+            }
+        });
     }
 }

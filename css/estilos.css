@@ -13,3 +13,20 @@
     padding: 15px;
     background-color: #444;
 }
+form input{
+    display: block;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
+    position: relative;
+}
+.selectize-control{
+    display: block;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
+    position: relative;
+    
+}
