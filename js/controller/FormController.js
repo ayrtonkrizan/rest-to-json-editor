@@ -40,7 +40,7 @@ class FormController {
                     .map(x => body[x.id] = x.type != 'selectize' ? $(`#${x.id}`).val() : $(`#${x.id}`).val().split(','));
 
                 this._http
-                    .post(menu.link, body)
+                    [menu.method](menu.link, body)
                     .then(json => {
                         console.log(json);
                         this._jsonEditor.alter(json);
