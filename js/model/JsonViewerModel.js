@@ -1,6 +1,14 @@
 class JsonViewerModel {
-    constructor(data){
-        this._data = data ? data: {};
+    constructor(){
+        this._data = {};
+    }
+
+    alter(json){
+        this._data = json;
+    }
+
+    get dados(){
+        return this._data;
     }
     
 }

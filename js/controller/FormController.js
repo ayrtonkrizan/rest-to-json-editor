@@ -3,6 +3,8 @@ class FormController {
         this._jsonDisplay = $('#json-display');
         this._restFilters = $('#rest-filters');
         this._menusDisplay = $('#menus-display');
+
+        this._http = new HttpService();
         
         this._filtersView = new FiltersView(this._restFilters);
         this._filterList = ProxyFactory.create(
@@ -15,26 +17,35 @@ class FormController {
         this._menusList = ProxyFactory.create(
             new MenusModel(),
             ['add'],
-            (model) => {
-                this._menusView.update(model);
-                
-            }
+            (model) => this._menusView.update(model)
         );
         
-        //this._clientModel = new FiltersModel();
-        //this._statusModel = new FiltersModel('getFaturamento', "Consulta Status NF", [{id:'PVS', placeholder:'Digite Numeros Notas'}])
-        this._jsonView = (this._jsonDisplay);
+        this._jsonView = new JsonView(this._jsonDisplay);
+        this._jsonEditor = ProxyFactory.create(
+            new JsonViewerModel(),
+            ['alter'],
+            (model) => this._jsonView.update(model)
+        );
+        
         this._init();
     }
-
     _init(){
         $('header ul').on('click', (e) =>{
-            this._teste = e;
-            console.log(e.target.id);
             let menu = this._menusList.menus.find((m) => m.id == e.target.id)
             this._filterList.morphModelByObject(menu);
-            $('form').submit(menu.submit);
-        })
+            
+            $('form').submit(() => {
+                console.log(menu);
+
+                this._http
+                    .get(menu.link)
+                    .then(json => {
+                        console.log(json);
+                        this._jsonEditor.alter(json);
+                    })
+                    .catch(err => console.log(err));
+            });
+        });
 
         this._carregaMenus(menusConfig)
     }
