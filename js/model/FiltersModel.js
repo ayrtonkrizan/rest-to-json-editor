@@ -21,7 +21,7 @@ class FiltersModel{
         this._filterList = [].concat(filterList);
     }
 
-    addFilter(filter){
+    add(filter){
         this._filterList.push(filter);
     }
 }

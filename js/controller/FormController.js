@@ -2,27 +2,25 @@ class FormController {
     constructor(){
         this._jsonDisplay = $('#json-display');
         this._restFilters = $('#rest-filters');
+        this._menusDisplay = $('#menus-display');
         
         this._filtersView = new FiltersView(this._restFilters);
-        
         this._filterList = ProxyFactory.create(
             new FiltersModel('getCliente', "Consulta cliente", [{id:'ID', placeholder:'Digite CPF/CNPJ'}]),
-            ['addFilter', 'morphModel'],
+            ['add', 'morphModel'],
             (model) => this._filtersView.update(model)
         );
-
-        this._menus = {
-            getCliente: {
-                id: 'getCliente', 
-                name: 'Consulta cliente', 
-                filters: [{id:'ID', placeholder:'Digite CPF/CNPJ'}]
-            },
-            getFaturamento: {
-                id: 'getFaturamento', 
-                name: 'Consulta Status NF', 
-                filters: [{id:'PVS', placeholder:'Digite Numeros de Pedidos'}]
+        
+        this._menusView = new MenusView(this._menusDisplay);
+        this._menusList = ProxyFactory.create(
+            new MenusModel(),
+            ['add'],
+            (model) => {
+                this._menusView.update(model);
+                
             }
-        };
+        );
+        
         //this._clientModel = new FiltersModel();
         //this._statusModel = new FiltersModel('getFaturamento', "Consulta Status NF", [{id:'PVS', placeholder:'Digite Numeros Notas'}])
         this._jsonView = (this._jsonDisplay);
@@ -30,27 +28,18 @@ class FormController {
     }
 
     _init(){
-        $('header a').on('click', (e) =>{
-            //console.log(e.target.id);
-            switch(e.target.id){
-                case 'getCliente':
-                    this._filterList.morphModelByObject(formController._menus["getFaturamento"]);
-                    break;
-                case 'getFaturamento':
-                    this._filterList.morphModelByObject(formController._menus["getFaturamento"]);
-                    //this._filtersView.update(this._statusModel);
-                    // $('#PVS').selectize({
-                    //     delimiter: ',',
-                    //     persist: false,
-                    //     create: function(input) {
-                    //         return {
-                    //             value: input,
-                    //             text: input
-                    //         }
-                    //     }
-                    // });
-                    // break;
-            }
+        $('header ul').on('click', (e) =>{
+            this._teste = e;
+            console.log(e.target.id);
+            let menu = this._menusList.menus.find((m) => m.id == e.target.id)
+            this._filterList.morphModelByObject(menu);
+            $('form').submit(menu.submit);
         })
+
+        this._carregaMenus(menusConfig)
+    }
+
+    _carregaMenus(menus){
+        menus.forEach((menu) => this._menusList.add(menu))
     }
 }

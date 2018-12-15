@@ -23,9 +23,7 @@
                     <a class="navbar-brand" href="#">RestToJViewer</a>
                 </div>
                 <div class="collapse navbar-collapse" id="collapse-navbar">
-                    <ul class="nav navbar-nav">
-                        <li><a id='getCliente' href="#">Consulta Clientes</a></li>
-                        <li><a id= 'getFaturamento'href="#">Consulta Status Notas</a></li>
+                    <ul id="menus-display" class="nav navbar-nav">
                     </ul>
                 </div>
             </div>
@@ -44,11 +42,17 @@
     <script src="libs/jquery.js"></script>
     <script src="libs/bootstrap/js/bootstrap.min.js"></script>
     <script src="libs/json-editor.min.js"></script>
+    
+    <script src="config/menus.js"></script>
     <script src="js/services/ProxyFactory.js"></script>
+    
     <script src="js/model/FiltersModel.js"></script>
+    <script src="js/model/MenusModel.js"></script>
+
     <script src="js/view/View.js"></script>
     <script src="js/view/FiltersView.js"></script>
     <script src="js/view/JsonView.js"></script>
+    <script src="js/view/MenusView.js"></script>
     <script src="js/controller/FormController.js"></script>
     <script src="js/tester.js"></script>
     <script>
