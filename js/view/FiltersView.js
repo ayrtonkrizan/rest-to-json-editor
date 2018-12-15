@@ -8,7 +8,8 @@ class FiltersView extends View{
     template(model) {
         let fields = {
             text: '<input id="{id}" type="text" placeholder="{placeholder}"/>',
-            selectize: '<input id="{id}" type="selectize" placeholder="{placeholder}"/>'
+            selectize: '<input id="{id}" type="selectize" placeholder="{placeholder}"/>',
+            url: '<input id="{id}" type="text" placeholder="{placeholder}"/>',
         }; 
         let html = `
         <h1 class="text-center">${model.title}</h1>

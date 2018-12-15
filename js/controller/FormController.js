@@ -36,11 +36,16 @@ class FormController {
 
             $('form').submit(() => {
                 let body = {};
+                let link = '';
+                
+                link = menu.link;
+                this._filterList.filters
+                        .map(x => link = x.type == 'url' ? menu.link.replace(`{${x.id}}`, $(`#${x.id}`).val()) : link);
                 this._filterList.filters
                     .map(x => body[x.id] = x.type != 'selectize' ? $(`#${x.id}`).val() : $(`#${x.id}`).val().split(','));
 
                 this._http
-                    [menu.method](menu.link, body)
+                    [menu.method](link, body)
                     .then(json => {
                         console.log(json);
                         this._jsonEditor.alter(json);
