@@ -33,12 +33,14 @@ class FormController {
         $('header ul').on('click', (e) =>{
             let menu = this._menusList.menus.find((m) => m.id == e.target.id)
             this._filterList.morphModelByObject(menu);
-            
+
             $('form').submit(() => {
-                console.log(menu);
+                let body = {};
+                this._filterList.filters
+                    .map(x => body[x.id] = x.type != 'selectize' ? $(`#${x.id}`).val() : $(`#${x.id}`).val().split(','));
 
                 this._http
-                    .get(menu.link)
+                    .post(menu.link, body)
                     .then(json => {
                         console.log(json);
                         this._jsonEditor.alter(json);

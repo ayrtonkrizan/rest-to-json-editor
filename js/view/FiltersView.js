@@ -24,15 +24,16 @@ class FiltersView extends View{
     update(model){
         super.update(model);
 
-        $('input[type="selectize"]').selectize({
-            delimiter: ',',
-            persist: false,
-            create: function(input) {
-                return {
-                    value: input,
-                    text: input
+        $('input[type="selectize"]')
+            .selectize({
+                delimiter: ',',
+                persist: false,
+                create: function(input) {
+                    return {
+                        value: input,
+                        text: input
+                    }
                 }
-            }
         });
     }
 }
