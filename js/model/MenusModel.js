@@ -1,4 +1,4 @@
-class MenusModel {
+export class MenusModel {
     constructor(){
         this._idSelecionado = '';
         this._listaMenus = [];

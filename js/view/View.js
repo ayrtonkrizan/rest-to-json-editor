@@ -1,4 +1,4 @@
-class View {
+export class View {
     constructor(elemento) {
         this._elemento = typeof(elemento) === 'string'? $(elemento): elemento;
     }

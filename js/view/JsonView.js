@@ -1,6 +1,6 @@
-//import {View} from './View.js';
+import {View} from './View.js';
 
-class JsonView extends View{
+export class JsonView extends View{
     constructor(elemento){
         super(elemento);
         this._editor = new JsonEditor(this._elemento, {});

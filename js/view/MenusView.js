@@ -1,4 +1,5 @@
-class MenusView extends View{
+import {View} from './View.js'
+export class MenusView extends View{
     constructor(elemento){
         super(elemento);
     }

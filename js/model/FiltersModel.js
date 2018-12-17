@@ -1,4 +1,4 @@
-class FiltersModel{
+export class FiltersModel{
     constructor(id, title, filterList){
         this.morphModel(id, title, filterList);
     }

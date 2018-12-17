@@ -1,4 +1,4 @@
-class JsonViewerModel {
+export class JsonViewerModel {
     constructor(){
         this._data = {};
     }

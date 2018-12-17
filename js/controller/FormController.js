@@ -1,3 +1,15 @@
+import {HttpService} from '../services/HttpService.js';
+import {ProxyFactory} from '../services/ProxyFactory.js';
+
+import {FiltersView} from '../view/FiltersView.js';
+import {JsonView} from '../view/JsonView.js';
+import {MenusView} from '../view/MenusView.js';
+
+import {FiltersModel} from '../model/FiltersModel.js';
+import {JsonViewerModel} from '../model/JsonViewerModel.js';
+import {MenusModel} from '../model/MenusModel.js';
+
+
 class FormController {
     constructor(){
         this._jsonDisplay = $('#json-display');
@@ -52,4 +64,12 @@ class FormController {
     _carregaMenus(menus){
         menus.forEach((menu) => this._menusList.add(menu))
     }
+}
+
+let formController = new FormController();
+
+export function currentInstance() {
+
+    return formController;
+
 }

@@ -1,6 +1,6 @@
-//import {View} from './View.js';
+import {View} from './View.js';
 
-class FiltersView extends View{
+export class FiltersView extends View{
     constructor(elemento){
         super(elemento);
     }
