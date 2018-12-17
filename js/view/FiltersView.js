@@ -15,7 +15,7 @@ class FiltersView extends View{
         <h1 class="text-center">${model.title}</h1>
         <div class="text-center">
             <form webservice="${model.id}" class="form">
-                ${model.filters.map(f=> fields[f.type].replace('{id}', f.id).replace('{placeholder}', f.placeholder)).join('')}
+                ${model.filterList.map(f=> fields[f.type].replace('{id}', f.id).replace('{placeholder}', f.placeholder)).join('')}
                 <button id="submit" type="submit" class="btn btn-primary">Consultar</button>
             </form>
         </div>

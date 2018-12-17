@@ -31,18 +31,17 @@ class FormController {
     }
     _init(){
         $('header ul').on('click', (e) =>{
-            let menu = this._menusList.menus.find((m) => m.id == e.target.id)
+            this._menusList.selecionado = e.target.id;
+            let menu = this._menusList.menuSelecionado;
             this._filterList.morphModelByObject(menu);
 
             $('form').submit(() => {
                 let body = {};
                 let link = '';
                 
-                link = menu.link;
-                this._filterList.filters
-                        .map(x => link = x.type == 'url' ? menu.link.replace(`{${x.id}}`, $(`#${x.id}`).val()) : link);
-                this._filterList.filters
-                    .map(x => body[x.id] = x.type != 'selectize' ? $(`#${x.id}`).val() : $(`#${x.id}`).val().split(','));
+                link = this._filterList.urlFilters(menu.link);
+
+                body = this._filterList.bodyFilters();
 
                 this._http
                     [menu.method](link, body)

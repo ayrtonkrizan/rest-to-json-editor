@@ -1,5 +1,6 @@
 class MenusModel {
     constructor(){
+        this._idSelecionado = '';
         this._listaMenus = [];
     }
 
@@ -9,6 +10,14 @@ class MenusModel {
 
     get menus(){
         return this._listaMenus
+    }
+
+    get menuSelecionado(){
+        return this._listaMenus.find((m) => m.id == this._idSelecionado)
+    }
+
+    set selecionado(id){
+        this._idSelecionado = id;
     }
     
 }
