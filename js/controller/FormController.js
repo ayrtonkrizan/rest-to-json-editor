@@ -62,7 +62,7 @@ class FormController {
     }
 
     _carregaMenus(menus){
-        menus.forEach((menu) => this._menusList.add(menu))
+        menus.forEach(this._menusList.add)
     }
 }
 
