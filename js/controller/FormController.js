@@ -8,7 +8,7 @@ class FormController {
         
         this._filtersView = new FiltersView(this._restFilters);
         this._filterList = ProxyFactory.create(
-            new FiltersModel('getCliente', "Consulta cliente", [{id:'ID', placeholder:'Digite CPF/CNPJ'}]),
+            new FiltersModel(),
             ['add', 'morphModel'],
             (model) => this._filtersView.update(model)
         );
@@ -36,20 +36,13 @@ class FormController {
             this._filterList.morphModelByObject(menu);
 
             $('form').submit(() => {
-                let body = {};
-                let link = '';
-                
-                link = this._filterList.urlFilters(menu.link);
-
-                body = this._filterList.bodyFilters();
+                let link = this._filterList.urlFilters(menu.link);
+                let body = this._filterList.bodyFilters();
 
                 this._http
                     [menu.method](link, body)
-                    .then(json => {
-                        console.log(json);
-                        this._jsonEditor.alter(json);
-                    })
-                    .catch(err => console.log(err));
+                    .then(this._jsonEditor.alter)
+                    .catch(console.log);
             });
         });
 
