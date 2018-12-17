@@ -1,3 +1,3 @@
 const keysConfig = {
-    marvel: '[]'
+    marvel: '[SUA API KEY]'
 }
