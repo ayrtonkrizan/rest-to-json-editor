@@ -1,7 +1,7 @@
 # Rest To Json Viewer
 > **This is a web app built in JavaScript, with simple and straight forward configuration to test REST API`s.**
 
-##Configuration
+## Configuration
 1. Clone this repository;
 2. Open ./config/menus.js;
 3. Push objects to list for create new menus;
