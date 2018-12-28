@@ -44,8 +44,7 @@ const menusConfig = [
         title: 'Consulta cliente', 
         filters: [
             {id:'ID', placeholder:'Digite CPF/CNPJ', type:'text'},
-            {id:'M', placeholder:'Digite muitas coisas', type:'selectize'},
-            {id:'N', placeholder:'Digite muitas coisas', type:'selectize'}
+            {id:'M', placeholder:'Digite muitas coisas', type:'selectize'}
         ],
         method: 'get',
         link: 'http://localhost/clientes'
