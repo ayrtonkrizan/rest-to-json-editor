@@ -19,11 +19,11 @@
 ## Testing this Sample
 1. run `npm install http-server -g`;
 2. clone this repository;
-3. cd to rest-to-json-viewer main folder;
-4. open file `config/private.js` and replace `[SUA API KEY]` to `your Mavel api key`. More about Mavel API Key on [Marvel developer site](https://developer.marvel.com/)
-5. run `http-server`;
-6. Open browser and navigate to `localhost:8080` or address showed after run step 5;
-7. Surf on web app;
+3. cd to rest-to-json-viewer main folder `cd rest-to-json-viewer`;
+4. run `http-server`;
+5. Open browser and navigate to `localhost:8080` or address showed after run step 4;
+6. Surf on web app;
+7. To test Marvel Menus - open file `config/private.js` and replace `yourApiKey` to `your Mavel api key`. More about Mavel API Key on [Marvel developer site](https://developer.marvel.com/)
 
 ## More About this project 
 ### Design Partners Applied

@@ -47,7 +47,8 @@ class FormController {
             let menu = this._menusList.menuSelecionado;
             this._filterList.morphModelByObject(menu);
 
-            $('form').submit(() => {
+            $('form').submit((e) => {
+                e.preventDefault();
                 let link = this._filterList.urlFilters(menu.link);
                 let body = this._filterList.bodyFilters();
 
