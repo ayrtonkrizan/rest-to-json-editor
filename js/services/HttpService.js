@@ -18,6 +18,10 @@ export class HttpService {
                             body: JSON.stringify(dado)
                     })
                 .then(res => this._handleErrors(res))
-                .then(res => res.json());
+                .then(res => {
+                    //console.log(res); 
+                    //console.log(res.json());
+                    return res.json()
+                });
     }
 }

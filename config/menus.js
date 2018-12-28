@@ -53,8 +53,21 @@ const menusConfig = [
     {
         id: 'getFaturamento', 
         title: 'Consulta Status NF', 
-        filters: [{id:'PVS', placeholder:'Digite Numeros de Pedidos', type:'selectize'}],
+        filters: [
+            {id:'Token', placeholder:'Digite Token', type:'text'},
+            {id:'PVS', placeholder:'Digite Numeros de Pedidos', type:'selectize'}
+        ],
         method: 'post',
-        link: 'http://localhost/notas'
+        //link: 'http://localhost/notas'
+        link:'https://gpdb.geistlich.com:8443/B1iXcellerator/exec/ipo/vP.0010000117.in_HCSX/com.sap.b1i.vplatform.runtime/INB_HT_CALL_SYNC_XPT/INB_HT_CALL_SYNC_XPT.ipo/proc/getFaturamento'
+    },
+    {
+        id: 'starWars1',
+        title: 'Star Wars',
+        filters: [
+            {id:'person', placeholder:'Type a number', type:'url'}
+        ],
+        method: 'get',
+        link:'https://swapi.co/api/people/{person}/'
     }
 ];
