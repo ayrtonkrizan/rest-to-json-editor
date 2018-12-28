@@ -1,3 +1,3 @@
 const keysConfig = {
-    marvel: 'yourApiKey'
+    marvel: 'yourApiKey]'
 }
